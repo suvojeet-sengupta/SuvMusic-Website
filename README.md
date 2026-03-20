@@ -15,7 +15,7 @@ The actual source code for the SuvMusic player application can be found here:
 ## ✨ Website Features
 
 - **🎨 Beautiful UI:** Modern design with smooth, delightful animations and a dark, immersive interface.
-- **📱 Fully Responsive:** Optimized for mobile, tablet, and desktop viewing.
+- **📱 Android Only:** Exclusively available for the Android ecosystem (Phones, Tablets, and Android TV).
 - **🚀 Performance:** Built with vanilla HTML, CSS, and JS for near-instant load times.
 - **✨ Interactive:** Features a dynamic Canvas-based background and scroll-reveal animations.
 
