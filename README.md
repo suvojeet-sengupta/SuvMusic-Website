@@ -2,7 +2,11 @@
 
 **The official landing page for SuvMusic — Listen Without Limits.**
 
-This repository contains the source code for the [SuvMusic](https://suvojeet-sengupta.github.io/SuvMusic-Website/) website. SuvMusic itself is a free, open-source music player crafted with love by **Suvojeet Sengupta**.
+This repository contains the source code for the [SuvMusic](https://suvojeet-sengupta.github.io/SuvMusic-Website/) website.
+
+- **Website Creator:** [Tanmay Mondal](https://github.com/suvojeet-sengupta)
+- **Maintainer:** [Suvojeet Sengupta](https://github.com/suvojeet-sengupta)
+- **Admin & Community:** [Tamal Mondal (@No_PaiiiN_No_GaiiiN)](https://t.me/No_PaiiiN_No_GaiiiN)
 
 ---
 
