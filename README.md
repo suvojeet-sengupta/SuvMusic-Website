@@ -5,7 +5,7 @@
 This repository contains the source code for the [SuvMusic](https://suvojeet-sengupta.github.io/SuvMusic-Website/) website.
 
 - SuvMusic App Developer: [Suvojeet Sengupta](https://github.com/suvojeet-sengupta)
-- Website Designer: Tanmay Mondal
+- Website Designer: Tamal Mondal
 - Website Maintainer: [Suvojeet Sengupta](https://github.com/suvojeet-sengupta)
 - Admin & Community: [Tamal Mondal (@No_PaiiiN_No_GaiiiN)](https://t.me/No_PaiiiN_No_GaiiiN)
 
