@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy — SuvMusic</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --rose:#e8788a;--blush:#f2a5b0;--mauve:#c0607a;--deep:#7a2d42;
+  --bg:#1a0d12;--card:rgba(255,255,255,0.055);--border:rgba(255,255,255,0.10);
+  --text:#fdf0f2;--muted:rgba(253,240,242,0.55);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+#blob-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6}
+body::after{content:'';position:fixed;inset:0;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.03;pointer-events:none}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 40px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(26,13,18,0.65);
+  border-bottom:1px solid var(--border);
+  opacity:0;animation:fadeDown .7s .1s ease forwards
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{
+  width:32px;height:32px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--rose),var(--mauve));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(192,96,122,.4);font-size:1rem;
+}
+.nav-logo span{
+  font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;
+  letter-spacing:-.02em;
+  background:linear-gradient(135deg,var(--blush),var(--rose));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.nav-center{display:flex;gap:4px;align-items:center}
+.nav-center a{
+  font-size:.78rem;color:var(--muted);text-decoration:none;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 14px;border-radius:100px;
+  transition:color .2s,background .2s;font-weight:500;
+}
+.nav-center a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.nav-center a.active{
+  color:var(--blush);background:rgba(232,120,138,.12);
+  border:1px solid rgba(232,120,138,.22);
+}
+.nav-right{display:flex;gap:10px;align-items:center}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 16px;border-radius:100px;
+  background:linear-gradient(135deg,var(--rose),var(--mauve));
+  color:#fff;text-decoration:none;font-size:.78rem;font-weight:600;
+  font-family:'Sora',sans-serif;letter-spacing:.03em;
+  box-shadow:0 4px 16px rgba(192,96,122,.35);
+  transition:transform .2s,box-shadow .2s;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(192,96,122,.5)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--muted);border-radius:2px;transition:transform .3s,opacity .3s}
+.nav-mobile{
+  display:none;flex-direction:column;gap:4px;
+  position:fixed;top:64px;left:0;right:0;z-index:99;
+  background:rgba(26,13,18,.95);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:12px 20px 18px;
+}
+.nav-mobile a{
+  padding:10px 14px;border-radius:12px;font-size:.85rem;
+  color:var(--muted);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;
+  transition:color .2s,background .2s;
+}
+.nav-mobile a:hover,.nav-mobile a.active{color:var(--blush);background:rgba(232,120,138,.1)}
+.nav-mobile.open{display:flex}
+@media(max-width:680px){
+  nav{padding:0 18px}
+  .nav-center,.nav-right .nav-cta{display:none}
+  .nav-toggle{display:flex}
+}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes rise{0%{transform:translateY(0);opacity:var(--op,.4)}100%{transform:translateY(-100vh);opacity:0}}
+
+/* ── PARTICLES ── */
+.particles{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:2}
+.p{position:absolute;border-radius:50%;background:rgba(232,120,138,.5);
+  animation:rise var(--d) var(--del) ease-in-out infinite}
+
+/* ── CONTENT ── */
+.content-section{position:relative;z-index:10;
+  max-width:860px;margin:0 auto;padding:120px 24px 80px;}
+
+.policy-card{
+  background:var(--card);border:1px solid var(--border);border-radius:32px;
+  padding:48px;backdrop-filter:blur(20px);
+  opacity:0;animation:fadeUp .8s .5s ease forwards;
+}
+
+.policy-card h1{font-family:'Sora',sans-serif;font-size:2.5rem;margin-bottom:32px;
+  background:linear-gradient(135deg,var(--blush),var(--rose));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+.policy-card h2{font-family:'Sora',sans-serif;font-size:1.4rem;margin:32px 0 16px;color:var(--rose)}
+.policy-card p{line-height:1.7;color:var(--muted);margin-bottom:16px;font-size:1.02rem}
+.policy-card ul{margin-bottom:24px;padding-left:20px}
+.policy-card li{color:var(--muted);margin-bottom:8px;line-height:1.6}
+
+.last-updated{font-size:.8rem;color:var(--mauve);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;display:block}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:10;padding:60px 20px;
+  border-top:1px solid var(--border);text-align:center;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;
+  font-size:.82rem;color:var(--muted);
+}
+footer strong{color:var(--text)}
+footer a{color:inherit;text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--blush)}
+.footer-sep{opacity:.3}
+
+@media(max-width:680px){
+  .policy-card{padding:32px 24px}
+  .policy-card h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<canvas id="blob-canvas"></canvas>
+<div class="particles" id="particles"></div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">♪</div>
+    <span>SuvMusic</span>
+  </a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="suvmusic-donate.html">Donate</a>
+    <a href="suvmusic-contact.html">Contact</a>
+    <a href="suvmusic-privacy.html" class="active">Privacy</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://github.com/suvojeet-sengupta/SuvMusic" class="nav-cta" target="_blank">
+      <span>GitHub</span>
+    </a>
+    <button class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">Home</a>
+  <a href="suvmusic-donate.html">Donate</a>
+  <a href="suvmusic-contact.html">Contact</a>
+  <a href="suvmusic-privacy.html" class="active">Privacy</a>
+</div>
+
+<main class="content-section">
+  <div class="policy-card">
+    <span class="last-updated">Last Updated: March 2026</span>
+    <h1>Privacy Policy</h1>
+    
+    <p>SuvMusic is built with a deep respect for your privacy. As an open-source project, our code is transparent and available for anyone to audit.</p>
+
+    <h2>1. Data Collection</h2>
+    <p>SuvMusic <strong>does not collect, store, or sell</strong> any personal data on its own servers. We do not have a centralized user database.</p>
+    <ul>
+      <li><strong>No Analytics:</strong> We do not use third-party tracking tools like Google Analytics or Firebase within the app.</li>
+      <li><strong>No Account Required:</strong> You can use SuvMusic without ever creating an account with us.</li>
+    </ul>
+
+    <h2>2. Third-Party Services</h2>
+    <p>To provide music streaming and enhanced features, SuvMusic interacts with third-party services. These interactions are governed by the respective services' privacy policies:</p>
+    <ul>
+      <li><strong>YouTube Music:</strong> Used for music streaming and metadata. If you choose to log in, your cookies are stored <strong>locally and securely</strong> on your device using Android's EncryptedSharedPreferences.</li>
+      <li><strong>SponsorBlock:</strong> An open-source API used to skip non-music segments in videos. The app sends the video ID to SponsorBlock to fetch skip segments.</li>
+      <li><strong>Lyrics Providers:</strong> We fetch synchronized lyrics from LRCLIB, KuGou, and SimpMusic. Only search queries or track IDs are shared with these services.</li>
+      <li><strong>Last.fm:</strong> If you enable scrobbling, your playback data is sent to Last.fm as per your account settings.</li>
+    </ul>
+
+    <h2>3. Crash Reporting (ACRA)</h2>
+    <p>SuvMusic uses ACRA (Application Crash Reports for Android) to help us fix bugs. However, <strong>no data is sent automatically</strong>. When a crash occurs:</p>
+    <ul>
+      <li>A crash log is generated <strong>locally</strong> on your device.</li>
+      <li>You are prompted to share this log manually.</li>
+      <li>You can review the log before sending it (usually via Telegram or email).</li>
+      <li>The log contains technical device info (model, Android version) and the stack trace, but no personal identity info.</li>
+    </ul>
+
+    <h2>4. Device Permissions</h2>
+    <p>SuvMusic requests the following permissions for essential functionality:</p>
+    <ul>
+      <li><strong>Internet:</strong> To stream music and fetch metadata.</li>
+      <li><strong>Storage:</strong> To play local audio files and manage downloads.</li>
+      <li><strong>Notifications:</strong> To provide playback controls in the notification drawer.</li>
+      <li><strong>Haptics:</strong> To provide tactile feedback for the "Music Haptics" feature.</li>
+      <li><strong>System Settings:</strong> Optional permission if you choose to set a song as your ringtone.</li>
+    </ul>
+
+    <h2>5. Local Storage</h2>
+    <p>All your preferences, search history, and cached data are stored <strong>locally on your device</strong>. You can clear this data at any time through the app settings or by clearing the app's cache in Android settings.</p>
+
+    <h2>6. Changes to This Policy</h2>
+    <p>We may update this policy occasionally to reflect changes in the app. Significant changes will be noted in the app's changelog.</p>
+
+    <p style="margin-top: 40px; font-weight: 600;">Questions? Contact us through the <a href="suvmusic-contact.html" style="color: var(--rose); text-decoration: none;">Contact Page</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <span>Website by <strong>Tamal Mondal</strong></span>
+  <span class="footer-sep">·</span>
+  <span>Maintained by <a href="https://github.com/suvojeet-sengupta" target="_blank">Suvojeet Sengupta</a></span>
+  <span class="footer-sep">·</span>
+  <a href="https://github.com/suvojeet-sengupta/SuvMusic" target="_blank">GitHub</a>
+  <span class="footer-sep">·</span>
+  <a href="suvmusic-donate.html">Support ♥</a>
+  <span class="footer-sep">·</span>
+  <a href="suvmusic-contact.html">Contact</a>
+  <span class="footer-sep">·</span>
+  <a href="suvmusic-privacy.html">Privacy Policy</a>
+  <span class="footer-sep">·</span>
+  <a href="https://www.suvojeetsengupta.in" target="_blank">suvojeetsengupta.in</a>
+</footer>
+
+<script>
+/* ── BLOB CANVAS ── */
+const canvas=document.getElementById('blob-canvas'),ctx=canvas.getContext('2d');
+let W,H;
+const blobs=[
+  {x:.10,y:.22,r:.42,color:'#c0607a',vx:.00014,vy:.00009},
+  {x:.85,y:.55,r:.45,color:'#7a2d42',vx:-.00013,vy:.00016},
+  {x:.52,y:.06,r:.33,color:'#e8788a',vx:.00019,vy:-.00008},
+  {x:.25,y:.80,r:.36,color:'#f2a5b0',vx:-.00016,vy:-.00013},
+];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+(function loop(t){
+  ctx.clearRect(0,0,W,H);
+  blobs.forEach(b=>{
+    const x=((b.x+b.vx*t)%1+1)%1,y=((b.y+b.vy*t)%1+1)%1,r=b.r*Math.min(W,H);
+    const g=ctx.createRadialGradient(x*W,y*H,0,x*W,y*H,r);
+    g.addColorStop(0,b.color+'cc');g.addColorStop(1,b.color+'00');
+    ctx.beginPath();ctx.arc(x*W,y*H,r,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+  });
+  requestAnimationFrame(loop);
+})(0);
+
+/* ── PARTICLES ── */
+const pw=document.getElementById('particles');
+for(let i=0;i<15;i++){
+  const p=document.createElement('div');p.className='p';
+  const s=Math.random()*4+2;
+  p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:-10px;
+    --d:${5+Math.random()*7}s;--del:${Math.random()*7}s;--op:${.2+Math.random()*.4};opacity:${.2+Math.random()*.4}`;
+  pw.appendChild(p);
+}
+
+/* ── NAV ── */
+const toggle=document.getElementById('navToggle');
+const mob=document.getElementById('navMobile');
+toggle.addEventListener('click',()=>mob.classList.toggle('open'));
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.boxShadow=window.scrollY>10?'0 4px 30px rgba(0,0,0,.4)':'none';
+});
+</script>
+
+</body>
+</html>
