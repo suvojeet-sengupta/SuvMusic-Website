@@ -523,7 +523,7 @@ footer a:hover{color:var(--blush)}
 
   <div class="version-badge">
     <span class="version-dot"></span>
-    Actively maintained · Open Source
+    Latest Release: v2.1.2.0 · Open Source
   </div>
 
   <div class="hero-btns">
@@ -570,40 +570,40 @@ footer a:hover{color:var(--blush)}
 
 <div class="features-grid">
   <div class="feat-card reveal-item">
-    <div class="feat-icon">🎵</div>
-    <h3>Unlimited Playback</h3>
-    <p>Stream any track without interruption. No ads, no skip limits, no subscription walls.</p>
-    <span class="feat-tag">Free</span>
+    <div class="feat-icon">⚙️</div>
+    <h3>Native Audio Engine</h3>
+    <p>High-fidelity playback powered by a custom C++ JNI layer for low-latency digital signal processing (DSP).</p>
+    <span class="feat-tag">C++ / JNI</span>
   </div>
   <div class="feat-card reveal-item">
     <div class="feat-icon">🎨</div>
-    <h3>Beautiful UI</h3>
-    <p>Thoughtfully designed with a focus on visual clarity and smooth, delightful animations.</p>
-    <span class="feat-tag">Polished</span>
+    <h3>Material 3 & Dynamic</h3>
+    <p>A reactive Material You interface that dynamically adjusts system-wide colors based on your album artwork.</p>
+    <span class="feat-tag">Jetpack Compose</span>
   </div>
   <div class="feat-card reveal-item">
     <div class="feat-icon">🔊</div>
-    <h3>High-Quality Audio</h3>
-    <p>Premium quality streaming with rich music metadata powered by open music APIs.</p>
+    <h3>Parametric EQ</h3>
+    <p>Professional 10-band ISO standard equalizer and real-time 3D sound positioning with ITD/ILD models.</p>
     <span class="feat-tag">HQ Audio</span>
   </div>
   <div class="feat-card reveal-item">
-    <div class="feat-icon">📱</div>
-    <h3>Android Only</h3>
-    <p>Exclusively built for the Android ecosystem. Supports phones, Tablets, and Android TV.</p>
-    <span class="feat-tag">Android Ecosystem</span>
+    <div class="feat-icon">📜</div>
+    <h3>Synced Lyrics</h3>
+    <p>Real-time, word-by-word synchronized lyrics integrated from LRCLIB, Kugou, and SimpMusic providers.</p>
+    <span class="feat-tag">Rich Metadata</span>
   </div>
   <div class="feat-card reveal-item">
-    <div class="feat-icon">🔍</div>
-    <h3>Smart Search</h3>
-    <p>Find any song, artist, or album in seconds with intelligent search capabilities.</p>
-    <span class="feat-tag">Instant</span>
+    <div class="feat-icon">⚡</div>
+    <h3>WSOLA Stretching</h3>
+    <p>High-quality pitch and speed adjustments without digital artifacts using advanced time-stretching algorithms.</p>
+    <span class="feat-tag">Advanced DSP</span>
   </div>
   <div class="feat-card reveal-item">
-    <div class="feat-icon">🌍</div>
-    <h3>Open Source</h3>
-    <p>Fully open — inspect the code, contribute features, or fork it for yourself on GitHub.</p>
-    <span class="feat-tag">GPL-3.0 License</span>
+    <div class="feat-icon">🤝</div>
+    <h3>Listen Together</h3>
+    <p>Real-time synchronized listening rooms with low-latency network protocols for a shared musical experience.</p>
+    <span class="feat-tag">Social Audio</span>
   </div>
 </div>
 
@@ -617,11 +617,11 @@ footer a:hover{color:var(--blush)}
       <h2>A player that feels <span class="accent">alive.</span></h2>
       <p>Every interaction in SuvMusic is crafted to feel smooth and intentional — from the fluid animations to the elegant player controls.</p>
       <ul class="feat-list">
-        <li class="reveal-item">Real-time waveform visualisation</li>
-        <li class="reveal-item">Lyrics sync support</li>
-        <li class="reveal-item">Gesture-based controls on mobile</li>
-        <li class="reveal-item">Dark, immersive interface by design</li>
-        <li class="reveal-item">Offline mode coming soon</li>
+        <li class="reveal-item">Native C++ JNI Audio Core</li>
+        <li class="reveal-item">Dynamic Island Mini-Player</li>
+        <li class="reveal-item">High-Fidelity 256kbps Streaming</li>
+        <li class="reveal-item">Gestures: Double tap, swipe, and zoom</li>
+        <li class="reveal-item">ACRA Crash Reporting Integration</li>
       </ul>
     </div>
     <div class="player-mock">
@@ -652,6 +652,46 @@ footer a:hover{color:var(--blush)}
     </div>
   </div>
 </div>
+
+<!-- ── TECH STACK ── -->
+<div class="section-label reveal-item">
+  <span>Tech Stack</span>
+</div>
+<div class="tech-stack-section reveal-item">
+  <div class="tech-grid">
+    <div class="tech-item">
+      <h4>Frontend</h4>
+      <p>100% Jetpack Compose for a reactive and fluid user interface.</p>
+    </div>
+    <div class="tech-item">
+      <h4>Language</h4>
+      <p>Built with Kotlin 2.3 for modern, safe, and efficient code.</p>
+    </div>
+    <div class="tech-item">
+      <h4>Audio Engine</h4>
+      <p>Custom C23 Native Engine via JNI for high-performance DSP.</p>
+    </div>
+    <div class="tech-item">
+      <h4>Architecture</h4>
+      <p>Clean Architecture with MVVM, Hilt, Room, and Coroutines.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.tech-stack-section{
+  padding:0 40px 100px;max-width:1100px;margin:0 auto;
+}
+.tech-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;
+}
+.tech-item{
+  background:var(--card);border:1px solid var(--border);padding:24px;border-radius:24px;
+}
+.tech-item h4{font-family:'Sora',sans-serif;color:var(--rose);margin-bottom:8px;font-size:1rem}
+.tech-item p{font-size:.85rem;color:var(--muted);line-height:1.6}
+@media(max-width:680px){.tech-stack-section{padding:0 20px 80px}}
+</style>
 
 <!-- ── CTA SECTION ── -->
 <div class="section-label reveal-item">
